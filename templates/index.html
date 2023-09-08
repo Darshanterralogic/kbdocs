@@ -1,0 +1,43 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>{{ header_title }}</title>
+
+        <link href="{{STATIC_URL}}/static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/bootstrap-icons.css" rel="stylesheet">
+
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/dataTables.bootstrap5.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/login.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/logout.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                new DataTable('#dashboardKbdocsList');
+            });
+        </script>
+    </head>
+
+    <body>
+        <main>
+
+            <div class="container">
+                {% if request.user.is_authenticated %}
+                    {% include 'header.html' %}
+                    {% include 'dashboard.html' %}
+                {% else %}
+                    {% include 'login.html' %}
+                {% endif %}
+              </div>
+        </main>
+    </body>
+</html>

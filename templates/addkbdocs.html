@@ -1,0 +1,148 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>{{ header_title }}</title>
+
+        <link href="{{STATIC_URL}}/static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/bootstrap-icons.css" rel="stylesheet">
+
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/dataTables.bootstrap5.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/logout.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/addeditkbdocs.js"></script>
+    </head>
+
+    <body>
+        <main>
+            <div class="container">
+                {% if request.user.is_authenticated %}
+                    {% include 'header.html' %}
+                    <h3 style="color:darkcyan">Add KBDoc</h3><br>
+                    <form action="" class="add-kbdoc-form">
+                        <div class="mb-3 row">
+                            <label for="tools" class="col-sm-2 col-form-label">Tools</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="tools" name="tools" required>
+                                    <option value="pyats" selected>pyATS</option>
+                                    <option value="xpresso">Xpresso</option>
+                                    <option value="earms">Earms</option>
+                                    <option value="trade">Trade</option>
+                                    <option value="laas">LaaS</option>
+                                    <option value="adsrsvp">ADSRSVP</option>
+                                    <option value="ssr">SSR</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="reporter" class="col-sm-2 col-form-label">Reporter</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="reporter" name="reporter" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="created_datetime" class="col-sm-2 col-form-label">Created Datetime</label>
+                            <div class="col-sm-10">
+                              <input type="datetime-local" class="form-control" id="created_datetime" name="created_datetime" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="closed_datetime" class="col-sm-2 col-form-label">Closed Datetime</label>
+                            <div class="col-sm-10">
+                              <input type="datetime-local" class="form-control" id="closed_datetime" name="closed_datetime" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="source_of_ticket" class="col-sm-2 col-form-label">Source Of Ticket</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="source_of_ticket" name="source_of_ticket" required>
+                                    <option value="sts" selected>STS</option>
+                                    <option value="piestack">Piestack</option>
+                                    <option value="github">Github</option>
+                                    <option value="webex">Webex</option>
+                                    <option value="mall">Mall</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="ticket_link" class="col-sm-2 col-form-label">Ticket Link</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="ticket_link" name="ticket_link" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="issue_type" class="col-sm-2 col-form-label">Issue Type</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="issue_type" name="issue_type" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="issue_title" class="col-sm-2 col-form-label">Issue Title</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" id="issue_title" name="issue_title" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="issue_description" class="col-sm-2 col-form-label">Issue Description</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="issue_description" name="issue_description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="category" name="category" required>
+                                    <option value="configmiss">Config Miss</option>
+                                    <option value="sysadmin" selected>Sys Admin</option>
+                                    <option value="bugfix">Bug Fix</option>
+                                    <option value="enhancement">Enhancement</option>
+                                    <option value="monitoring">Monitoring</option>
+                                    <option value="testingonly">Testing Only</option>
+                                    <option value="documentation">Documentation</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="help_links" class="col-sm-2 col-form-label">Help Links</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="help_links" name="help_links"></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="resolutions" class="col-sm-2 col-form-label">Resolutions</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="resolutions" name="resolutions" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="workaround" class="col-sm-2 col-form-label">Workaround</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="workaround" name="workaround" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="others" class="col-sm-2 col-form-label">Others</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="others" name="others" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <button type="submit" class="btn btn-primary mx-auto" style="width: 20%;">Add</button>
+                        </div>
+                    </form>
+                {% else %}
+                    {% include 'login.html' %}
+                {% endif %}
+              </div>
+        </main>
+    </body>
+</html>

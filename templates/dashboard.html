@@ -1,0 +1,45 @@
+<div class="row">
+    {% for kbdoc in kbdocs %}
+        <div class="col-sm-2">
+            <div class="card" style="border-left: 3px solid powderblue;">
+                <div class="card-body">
+                <h5 class="card-title">{{ kbdoc.tools }}</h5>
+                <p class="card-text">{{ kbdoc.count }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="row" style="padding-top: 50px;">
+    <table id="dashboardKbdocsList" class="table table-striped" style="width:100%;">
+        <thead>
+            <tr>
+                <th>Tools</th>
+                <th>Reporter</th>
+                <th>Source Of Ticket</th>
+                <th>Ticket Link</th>
+                <th>Issue Title</th>
+                <th>Issue Type</th>
+                <th>Category</th>
+                <th>Created DateTime</th>
+                <th>Closed DateTime</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for kbdoc in all_kbdocs %}
+                <tr>
+                    <td>{{ kbdoc.tools }}</td>
+                    <td>{{ kbdoc.reporter }}</td>
+                    <td>{{ kbdoc.source_of_ticket }}</td>
+                    <td>{{ kbdoc.ticket_link }}</td>
+                    <td>{{ kbdoc.issue_title }}</td>
+                    <td>{{ kbdoc.issue_type }}</td>
+                    <td>{{ kbdoc.category }}</td>
+                    <td>{{ kbdoc.created_datetime }}</td>
+                    <td>{{ kbdoc.closed_datetime }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

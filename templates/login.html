@@ -1,0 +1,44 @@
+{% load static %}
+
+
+<section class="py-5 text-center container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <form action="" class="login-form">
+        <div class="mb-3">
+          <label for="employeeId" class="form-label">Employee ID</label>
+          <input type="text" class="form-control" id="employeeId" aria-describedby="emailHelp">
+          <div class="invalid-feedback empty-employee-id">
+            Please enter employee ID.
+          </div>
+          <div class="invalid-feedback invalid-employee-id">
+            Please enter valid employee ID in a format PSI-1234.
+          </div>
+        </div>
+        <div class="mb-3">
+            <label for="employeeEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="employeeEmail" aria-describedby="emailHelp">
+            <div class="invalid-feedback invalid-email-id">
+                Please enter valid email ID.
+            </div>
+          </div>
+        <div class="mb-3">
+          <label for="employeePassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="employeePassword" minlength="8" maxlength="10">
+          <div class="invalid-feedback invalid-password">
+            <span>
+                Password should atleast 8-10 chars.<br>
+                Atleast 1 uppercase character<br>
+                Atleast 1 special character<br>
+                Atleast 1 digit
+            </span>
+          </div>
+          <div class="invalid-feedback empty-password">
+            Please enter password
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/signup/" class="btn btn-primary">Sign Up</a>
+    </form>
+</section>

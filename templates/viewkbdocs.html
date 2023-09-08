@@ -1,0 +1,71 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>View KB Docs</title>
+
+        <link href="{{STATIC_URL}}/static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link href="{{STATIC_URL}}/static/css/bootstrap-icons.css" rel="stylesheet">
+
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery-cookie.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/dataTables.bootstrap5.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/logout.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}/static/js/viewkbdocs.js"></script>
+    </head>
+
+    <body>
+        <main>
+            <div class="container">
+                {% if request.user.is_authenticated %}
+                    {% include 'header.html' %}
+                    <table id="kbdocslist" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Tools</th>
+                                <th>Reporter</th>
+                                <th>Source Of Ticket</th>
+                                <th>Ticket Link</th>
+                                <th>Issue Title</th>
+                                <th>Issue Type</th>
+                                <th>Category</th>
+                                <th>Created DateTime</th>
+                                <th>Closed DateTime</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for kbdoc in kbdocs %}
+                                <tr>
+                                    <td>{{ kbdoc.name }}</td>
+                                    <td>{{ kbdoc.tools }}</td>
+                                    <td>{{ kbdoc.reporter }}</td>
+                                    <td>{{ kbdoc.source_of_ticket }}</td>
+                                    <td>{{ kbdoc.ticket_link }}</td>
+                                    <td>{{ kbdoc.issue_title }}</td>
+                                    <td>{{ kbdoc.issue_type }}</td>
+                                    <td>{{ kbdoc.category }}</td>
+                                    <td>{{ kbdoc.created_datetime }}</td>
+                                    <td>{{ kbdoc.closed_datetime }}</td>
+                                    <td><a href="/viewdetailkbdoc/{{kbdoc.id}}/" target="_blank" class="btn btn-primary">View</a></td>
+                                    <td><a href="/editdetailkbdoc/{{kbdoc.id}}/" class="btn btn-warning">Edit</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {% include 'login.html' %}
+                {% endif %}
+              </div>
+        </main>
+    </body>
+</html>
