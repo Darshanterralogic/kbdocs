@@ -57,7 +57,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "http://localhost:8000/api/core/user/create/",
+            url: window.location.origin + "/api/core/user/create/",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ email: email, emp_id: employeeId, password: password, first_name: firstName, last_name: lastName }),

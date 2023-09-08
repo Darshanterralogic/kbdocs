@@ -7,7 +7,7 @@ $(document).ready(function () {
         });
         setTimeout(function () {
             $.ajax({
-                url: "http://localhost:8000/api/core/kbdocs/" + kbdocId + "/",
+                url: window.location.origin + "/api/core/kbdocs/" + kbdocId + "/",
                 type: "PUT",
                 contentType: "application/json",
                 data: JSON.stringify(data),
@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
         setTimeout(function () {
             $.ajax({
-                url: "http://localhost:8000/api/core/kbdocs/",
+                url: window.location.origin + "/api/core/kbdocs/",
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(data),

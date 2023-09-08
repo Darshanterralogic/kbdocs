@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(".sign-out-btn").click(function () {
         $.ajax({
-            url: "http://localhost:8000/api/core/user/logout/",
+            url: window.location.origin + "/api/core/user/logout/",
             type: "POST",
             contentType: "application/json",
             headers: { "X-CSRFToken": $.cookie("csrftoken"), 'Authorization': 'Bearer ' + $.cookie('token')},

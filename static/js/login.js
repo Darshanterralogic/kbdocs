@@ -39,7 +39,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "http://localhost:8000/api/core/user/login/",
+            url: window.location.origin + "/api/core/user/login/",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ email: email, emp_id: employeeId, password: password }),
